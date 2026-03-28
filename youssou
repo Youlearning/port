@@ -1,0 +1,1763 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheikh Youssou Bamar GUEYE | Data Scientist, Enseignant & Développeur Joomla</title>
+    <style>
+        /* Reset et base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --joomla: #5091cd;
+        }
+        
+        body {
+            font-family: Arial, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background: #f8f9fa;
+            scroll-behavior: smooth;
+        }
+        
+        /* Navigation */
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Sections principales */
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Hero Section - Format CV */
+        .hero {
+            background: white;
+            padding: 100px 20px 50px;
+            margin-top: 70px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 40px;
+            align-items: start;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .hero-text h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            line-height: 1.2;
+            color: var(--primary);
+        }
+        
+        .hero-text .highlight {
+            color: var(--secondary);
+            font-weight: 700;
+        }
+        
+        .hero-text .subtitle {
+            font-size: 1.4rem;
+            color: #7f8c8d;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+        
+        .contact-info {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .contact-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+            color: #555;
+        }
+        
+        .contact-item i {
+            margin-right: 10px;
+            color: var(--secondary);
+            width: 20px;
+            text-align: center;
+        }
+        
+        .hero-photo {
+            width: 280px;
+            height: 320px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border: 3px solid white;
+            position: relative;
+        }
+        
+        .real-photo {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .real-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+        /* Compétences Section - Format Table */
+        .skills-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            margin-top: 30px;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        
+        .skills-column h3 {
+            color: var(--primary);
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f3f5;
+            display: flex;
+            align-items: center;
+        }
+        
+        .skills-column h3 i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+        
+        .skill-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f0f3f5;
+        }
+        
+        .skill-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .skill-name {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .skill-level {
+            height: 8px;
+            background: #ecf0f1;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary), #5dade2);
+            border-radius: 4px;
+        }
+        
+        /* Expérience Section */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .experience-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .exp-date {
+            background: #e8f4fc;
+            color: var(--secondary);
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .exp-title {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .exp-company {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+        
+        .exp-description {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        /* Formation Section */
+        .education-timeline {
+            max-width: 800px;
+            margin: 40px auto 0;
+            position: relative;
+        }
+        
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: var(--secondary);
+        }
+        
+        .edu-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .edu-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--secondary);
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #e8f4fc;
+        }
+        
+        .edu-date {
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        .edu-title {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .edu-institution {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+        }
+        
+        /* NOUVEAU : Section Profils Joomla */
+        .profiles-section {
+            background: #f0f7ff;
+            border-radius: 15px;
+            padding: 40px;
+            margin-top: 30px;
+        }
+        
+        .profiles-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .profile-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .profile-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(80, 145, 205, 0.15);
+        }
+        
+        .profile-icon {
+            font-size: 3rem;
+            color: var(--joomla);
+            margin-bottom: 20px;
+        }
+        
+        .profile-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .profile-card ul {
+            list-style: none;
+            text-align: left;
+            margin: 20px 0;
+        }
+        
+        .profile-card ul li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .profile-card ul li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+        
+        .profile-price {
+            color: var(--joomla);
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin: 20px 0;
+        }
+        
+        /* NOUVEAU : Section Services */
+        .services-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 40px;
+            margin-top: 30px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.1);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        /* Matières Enseignées */
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .subject-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .subject-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.1);
+        }
+        
+        .subject-card h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .subject-card h4 i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+        
+        .subject-list {
+            list-style: none;
+        }
+        
+        .subject-list li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .subject-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        
+        /* Langues et Informatique */
+        .lang-tech-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .lang-tech-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .language-name {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .language-level {
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            background: #e8f4fc;
+            padding: 4px 12px;
+            border-radius: 15px;
+        }
+        
+        /* Technologies Grid */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .tech-item {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .tech-item:hover {
+            background: #e8f4fc;
+            color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        /* NOUVEAU : Formulaire de Commande */
+        .order-form-container {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            margin-top: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ecf0f1;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .btn {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .btn-joomla {
+            background: var(--joomla);
+        }
+        
+        .btn-joomla:hover {
+            background: #3a7bb8;
+        }
+        
+        /* Messages de confirmation */
+        .message {
+            display: none;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-link {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .footer-link:hover {
+            color: var(--secondary);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-photo {
+                margin: 20px auto;
+                width: 250px;
+                height: 300px;
+            }
+            
+            .skills-grid, .profiles-grid, .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .experience-grid, .lang-tech-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section {
+                padding: 60px 20px;
+            }
+            
+            .skills-grid, .profiles-grid, .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tech-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Animation pour l'écran */
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Styles pour impression PDF */
+        @media print {
+            .navbar, 
+            footer,
+            .nav-links,
+            .logo,
+            .section-title p,
+            .fade-in,
+            .footer-links,
+            .footer-content h3,
+            .footer-content p,
+            #contact-form,
+            #order-form,
+            .btn,
+            .profiles-section,
+            .services-section,
+            .message {
+                display: none !important;
+            }
+            
+            body {
+                background: white !important;
+                color: #000 !important;
+                font-size: 11pt !important;
+                line-height: 1.4 !important;
+                margin: 15mm 10mm !important;
+                padding: 0 !important;
+                width: 100% !important;
+            }
+            
+            .section {
+                padding: 15px 0 !important;
+                margin: 0 !important;
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            .hero {
+                margin-top: 0 !important;
+                padding: 10px 0 20px 0 !important;
+                background: white !important;
+                box-shadow: none !important;
+                border-bottom: 2px solid #3498db !important;
+            }
+            
+            .hero-content {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: flex-start !important;
+                gap: 20px !important;
+            }
+            
+            .hero-text h1 {
+                font-size: 18pt !important;
+                color: #000 !important;
+                margin-bottom: 5px !important;
+            }
+            
+            .hero-text .subtitle {
+                font-size: 12pt !important;
+                color: #333 !important;
+                margin-bottom: 10px !important;
+            }
+            
+            .contact-info {
+                background: #f5f5f5 !important;
+                padding: 12px !important;
+                margin-top: 10px !important;
+                font-size: 9pt !important;
+            }
+            
+            .contact-row {
+                display: block !important;
+                margin-bottom: 5px !important;
+            }
+            
+            .contact-item {
+                margin-bottom: 3px !important;
+                display: block !important;
+            }
+            
+            .hero-photo {
+                width: 150px !important;
+                height: 180px !important;
+                margin-top: 0 !important;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+            }
+            
+            .section-title h2 {
+                font-size: 14pt !important;
+                color: #000 !important;
+                border-bottom: 2px solid #3498db !important;
+                padding-bottom: 5px !important;
+                margin-bottom: 15px !important;
+            }
+            
+            .skills-grid {
+                display: grid !important;
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 20px !important;
+            }
+            
+            .skills-column {
+                margin-bottom: 15px !important;
+            }
+            
+            .skills-column h3 {
+                font-size: 12pt !important;
+                margin-bottom: 15px !important;
+            }
+            
+            .skill-item {
+                margin-bottom: 10px !important;
+                padding-bottom: 10px !important;
+            }
+            
+            .experience-grid {
+                display: block !important;
+            }
+            
+            .experience-card {
+                margin-bottom: 15px !important;
+                padding: 15px !important;
+            }
+            
+            .education-timeline {
+                margin: 20px 0 0 0 !important;
+            }
+            
+            .edu-item {
+                margin-bottom: 15px !important;
+                padding-left: 20px !important;
+            }
+            
+            .subjects-grid {
+                display: block !important;
+            }
+            
+            .subject-card {
+                margin-bottom: 15px !important;
+                padding: 15px !important;
+            }
+            
+            .lang-tech-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 20px !important;
+            }
+            
+            .page-break {
+                page-break-before: always !important;
+            }
+            
+            h2, h3, .experience-card, .subject-card {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            #competences {
+                page-break-after: avoid !important;
+            }
+            
+            * {
+                color: #000 !important;
+            }
+            
+            a {
+                color: #000 !important;
+                text-decoration: none !important;
+            }
+        }
+    </style>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">CYBG<span>.</span></div>
+            <div class="nav-links">
+                <a href="#competences">Compétences</a>
+                <a href="#experience">Expérience</a>
+                <a href="#profiles">Profils Joomla</a>
+                <a href="#services">Services</a>
+                <a href="#formation">Formation</a>
+                <a href="#order">Commander</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero section" id="home">
+        <div class="hero-content">
+            <div class="hero-text fade-in">
+                <h1>GUEYE Cheikh Youssou Bamar</h1>
+                <div class="subtitle">Data Scientist, Enseignant & Développeur Joomla</div>
+                <p>Je combine une expertise technique en Data Science et Développement Web avec une passion pour l'enseignement. Expert en développement Joomla, je crée des sites web professionnels sur mesure. Mon Master en Statistiques et ma Licence en Mathématiques Appliquées me permettent de maîtriser les concepts scientifiques en profondeur.</p>
+                
+                <div class="contact-info">
+                    <div class="contact-row">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Quartier Ndande-Thiaroye Kao 3, Dakar, Sénégal</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+221 77 251 28 05</span>
+                        </div>
+                    </div>
+                    <div class="contact-row">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>cheikhyoussoubamargueye@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-linkedin"></i>
+                            <span>linkedin.com/in/cheikh-youssou-hamar-gueye-3249a5278</span>
+                        </div>
+                    </div>
+                    <div class="contact-row">
+                        <div class="contact-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Né le 17/03/1994 — Sénégalais — Célibataire</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-rocket"></i>
+                            <span>Disponible pour nouvelles opportunités</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-photo fade-in">
+                <div class="real-photo">
+                    <img src="https://i.postimg.cc/gJ42jKW7/moicop.jpg" alt="Cheikh Youssou Bamar GUEYE">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compétences -->
+    <section class="section" id="competences">
+        <div class="section-title">
+            <h2>Compétences Spécifiques</h2>
+            <p>Expertise complète en Data Science, Développement Joomla et Enseignement</p>
+        </div>
+        
+        <div class="skills-section">
+            <div class="skills-grid">
+                <!-- Data Science Compétences -->
+                <div class="skills-column fade-in">
+                    <h3><i class="fas fa-database"></i> Data Science & Analyse</h3>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Python (NumPy, Pandas, Scikit-learn)</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>R & Statistiques Avancées</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>SQL & Bases de Données</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 88%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Machine Learning</span>
+                            <span>82%</span>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 82%;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Développement Joomla -->
+                <div class="skills-column fade-in">
+                    <h3><i class="fab fa-joomla"></i> Développement Joomla</h3>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Joomla CMS Avancé</span>
+                            <span>92%</span>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 92%; background: linear-gradient(90deg, var(--joomla), #7ab5e5);"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Extensions Personnalisées</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 88%; background: linear-gradient(90deg, var(--joomla), #7ab5e5);"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>HTML5, CSS3, JavaScript</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 90%; background: linear-gradient(90deg, var(--joomla), #7ab5e5);"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>PHP & MySQL</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 85%; background: linear-gradient(90deg, var(--joomla), #7ab5e5);"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Enseignement Compétences -->
+                <div class="skills-column fade-in">
+                    <h3><i class="fas fa-chalkboard-teacher"></i> Pédagogie & Enseignement</h3>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Enseignement des Mathématiques</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 95%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Formation en Technologies</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Création de Supports Pédagogiques</span>
+                            <span>92%</span>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 92%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Vulgarisation Scientifique</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 88%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOUVELLE SECTION : Profils Joomla -->
+    <section class="section" id="profiles">
+        <div class="section-title">
+            <h2><i class="fab fa-joomla"></i> Profils de Développeur Joomla</h2>
+            <p>Trois formules adaptées à vos besoins en développement web</p>
+        </div>
+        
+        <div class="profiles-section">
+            <div class="profiles-grid">
+                <!-- Profil Junior -->
+                <div class="profile-card fade-in">
+                    <div class="profile-icon">
+                        <i class="fab fa-joomla"></i>
+                    </div>
+                    <h3>Développeur Joomla Junior</h3>
+                    <ul>
+                        <li>Installation et configuration Joomla</li>
+                        <li>Personnalisation de templates existants</li>
+                        <li>Gestion de contenu de base</li>
+                        <li>Maintenance préventive mensuelle</li>
+                        <li>Support technique niveau 1</li>
+                        <li>Formation à l'administration</li>
+                    </ul>
+                    <div class="profile-price">À partir de 150 000 FCFA</div>
+                    <button class="btn btn-joomla" onclick="scrollToOrder('joomla-junior')" style="width: 100%;">
+                        <i class="fas fa-shopping-cart"></i> Commander ce profil
+                    </button>
+                </div>
+                
+                <!-- Profil Expert -->
+                <div class="profile-card fade-in">
+                    <div class="profile-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Développeur Joomla Expert</h3>
+                    <ul>
+                        <li>Développement de composants sur mesure</li>
+                        <li>Intégration d'API externes</li>
+                        <li>Optimisation des performances SEO</li>
+                        <li>Sécurité avancée et sauvegardes</li>
+                        <li>Migration de données complexes</li>
+                        <li>Support technique prioritaire</li>
+                    </ul>
+                    <div class="profile-price">À partir de 350 000 FCFA</div>
+                    <button class="btn btn-joomla" onclick="scrollToOrder('joomla-expert')" style="width: 100%;">
+                        <i class="fas fa-shopping-cart"></i> Commander ce profil
+                    </button>
+                </div>
+                
+                <!-- Profil Manager -->
+                <div class="profile-card fade-in">
+                    <div class="profile-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Manager Projet Joomla</h3>
+                    <ul>
+                        <li>Gestion complète de projet</li>
+                        <li>Conception architecture technique</li>
+                        <li>Formation de l'équipe cliente</li>
+                        <li>Support technique 24/7</li>
+                        <li>Maintenance évolutive 1 an</li>
+                        <li>Analytics et rapports mensuels</li>
+                    </ul>
+                    <div class="profile-price">À partir de 500 000 FCFA</div>
+                    <button class="btn btn-joomla" onclick="scrollToOrder('joomla-manager')" style="width: 100%;">
+                        <i class="fas fa-shopping-cart"></i> Commander ce profil
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOUVELLE SECTION : Services -->
+    <section class="section" id="services">
+        <div class="section-title">
+            <h2>Mes Services</h2>
+            <p>Solutions complètes adaptées à vos besoins</p>
+        </div>
+        
+        <div class="services-section">
+            <div class="services-grid">
+                <!-- Service Joomla -->
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fab fa-joomla"></i>
+                    </div>
+                    <h3>Site Web Joomla</h3>
+                    <p>Création de sites web professionnels avec Joomla, responsive design, optimisation SEO et formation à l'administration.</p>
+                    <button class="btn btn-joomla" onclick="scrollToOrder('site-joomla')" style="margin-top: 15px;">
+                        <i class="fas fa-code"></i> Commander un site
+                    </button>
+                </div>
+                
+                <!-- Service Data Science -->
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Service Data Science</h3>
+                    <p>Analyse de données, modélisation statistique, visualisation et rapports d'analyse pour prise de décision éclairée.</p>
+                    <button class="btn" onclick="scrollToOrder('data-science')" style="margin-top: 15px;">
+                        <i class="fas fa-database"></i> Demander un service
+                    </button>
+                </div>
+                
+                <!-- Service Recrutement -->
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Recrutement & Enseignement</h3>
+                    <p>Disponible pour opportunités en Data Science, développement web ou enseignement des mathématiques.</p>
+                    <button class="btn" onclick="scrollToOrder('recrutement')" style="margin-top: 15px;">
+                        <i class="fas fa-briefcase"></i> Me recruter
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expérience Professionnelle -->
+    <section class="section" id="experience" style="background: #f8f9fa;">
+        <div class="section-title">
+            <h2>Expérience Professionnelle</h2>
+            <p>Parcours en Data Science, Développement Joomla et Enseignement</p>
+        </div>
+        
+        <div class="experience-grid">
+            <div class="experience-card fade-in">
+                <div class="exp-header">
+                    <div>
+                        <div class="exp-title">Développeur Joomla Freelance</div>
+                        <div class="exp-company">Projets Indépendants</div>
+                    </div>
+                    <div class="exp-date">2018 - Présent</div>
+                </div>
+                <div class="exp-description">
+                    <p>Création et maintenance de sites web avec Joomla pour des clients variés. Développement de solutions sur mesure.</p>
+                    <ul style="margin-top: 10px; padding-left: 20px; color: #555;">
+                        <li>Développement de sites avec Joomla CMS</li>
+                        <li>Création de thèmes et extensions personnalisés</li>
+                        <li>Migration de sites existants vers Joomla</li>
+                        <li>Optimisation SEO et performances</li>
+                        <li>Formation des clients à l'administration</li>
+                        <li>Support technique et maintenance</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="experience-card fade-in">
+                <div class="exp-header">
+                    <div>
+                        <div class="exp-title">Scientifique de Données</div>
+                        <div class="exp-company">Université Gaston Berger, Saint-Louis</div>
+                    </div>
+                    <div class="exp-date">Mai 2021 - Présent</div>
+                </div>
+                <div class="exp-description">
+                    <p>Conduite d'une étude portant sur les projets, définition du cadre méthodologique de recherche, recueil et traitement des données.</p>
+                    <ul style="margin-top: 10px; padding-left: 20px; color: #555;">
+                        <li>Analyse de données avec R et Python</li>
+                        <li>Traitement de séries temporelles</li>
+                        <li>Traitement statistique des données</li>
+                        <li>Utilisation d'outils Big Data</li>
+                        <li>Rédaction de rapports techniques</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formation -->
+    <section class="section" id="formation">
+        <div class="section-title">
+            <h2>Formation Académique</h2>
+            <p>Parcours universitaire en Mathématiques et Data Science</p>
+        </div>
+        
+        <div class="education-timeline">
+            <div class="edu-item fade-in">
+                <div class="edu-date">En cours (Phase de Soutenance)</div>
+                <div class="edu-title">Master de Statistiques - Sciences des Données et Applications</div>
+                <div class="edu-institution">Université Gaston Berger, Saint-Louis</div>
+            </div>
+            
+            <div class="edu-item fade-in">
+                <div class="edu-date">2015 - 2021</div>
+                <div class="edu-title">Licence Sciences et Technologie - Mathématiques Appliquées</div>
+                <div class="edu-institution">Université Gaston Berger, Saint-Louis</div>
+            </div>
+            
+            <div class="edu-item fade-in">
+                <div class="edu-date">2011 - 2014</div>
+                <div class="edu-title">Baccalauréat Série S1 : Mathématiques - Sciences Physiques</div>
+                <div class="edu-institution">Lycée Thiaroye, Dakar</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOUVELLE SECTION : Formulaire de Commande -->
+    <section class="section" id="order" style="background: #f0f7ff;">
+        <div class="section-title">
+            <h2><i class="fas fa-shopping-cart"></i> Commander un Service</h2>
+            <p>Demandez un site Joomla, un service Data Science ou contactez-moi pour un recrutement</p>
+        </div>
+        
+        <div class="order-form-container">
+            <!-- Message de confirmation -->
+            <div id="successMessage" class="message success-message">
+                <i class="fas fa-check-circle" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                <h3 style="margin-bottom: 10px;">Demande envoyée avec succès !</h3>
+                <p>Je vous répondrai dans les plus brefs délais à votre adresse email.</p>
+                <p style="margin-top: 10px; font-size: 0.9rem;">
+                    <i class="fas fa-info-circle"></i> Vérifiez votre boîte email pour la confirmation.
+                </p>
+            </div>
+            
+            <!-- Message d'erreur -->
+            <div id="errorMessage" class="message error-message">
+                <i class="fas fa-exclamation-circle" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                <h3 style="margin-bottom: 10px;">Erreur d'envoi</h3>
+                <p>Veuillez réessayer ou m'envoyer un email directement à <strong>cheikhyoussoubamargueye@gmail.com</strong></p>
+            </div>
+            
+            <!-- FORMULAIRE AMÉLIORÉ POUR FORMSPREE -->
+            <form id="order-form" action="https://formspree.io/f/xkgdpzdq" method="POST">
+                <!-- Champs cachés améliorés -->
+                <input type="hidden" name="_subject" value="🚀 NOUVELLE COMMANDE - Portfolio CYBG">
+                <input type="hidden" name="_replyto" value="cheikhyoussoubamargueye@gmail.com">
+                <input type="hidden" name="_format" value="plain">
+                <input type="text" name="_gotcha" style="display:none">
+                <input type="hidden" name="form_type" value="commande">
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="order-name">Nom complet *</label>
+                        <input type="text" id="order-name" name="nom" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="order-email">Email *</label>
+                        <input type="email" id="order-email" name="email" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="order-phone">Téléphone</label>
+                        <input type="tel" id="order-phone" name="telephone" placeholder="+221 XX XXX XX XX">
+                    </div>
+                    <div class="form-group">
+                        <label for="order-company">Entreprise/Organisation</label>
+                        <input type="text" id="order-company" name="entreprise">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="order-service">Type de service *</label>
+                    <select id="order-service" name="service" required>
+                        <option value="">Sélectionnez un service</option>
+                        <option value="joomla-junior">Profil Joomla Junior (150 000 FCFA)</option>
+                        <option value="joomla-expert">Profil Joomla Expert (350 000 FCFA)</option>
+                        <option value="joomla-manager">Profil Joomla Manager (500 000 FCFA)</option>
+                        <option value="site-joomla">Site Web Joomla sur mesure</option>
+                        <option value="data-science">Service Data Science</option>
+                        <option value="recrutement">Recrutement/Enseignement</option>
+                        <option value="autre">Autre demande</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="order-budget">Budget estimé (FCFA)</label>
+                    <input type="text" id="order-budget" name="budget" placeholder="Ex: 200 000 FCFA">
+                </div>
+                
+                <div class="form-group">
+                    <label for="order-deadline">Délai souhaité</label>
+                    <input type="text" id="order-deadline" name="delai" placeholder="Ex: 3 semaines">
+                </div>
+                
+                <div class="form-group">
+                    <label for="order-description">Description détaillée de votre projet *</label>
+                    <textarea id="order-description" name="description" rows="6" required placeholder="Décrivez votre projet, vos besoins spécifiques, vos attentes..."></textarea>
+                </div>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <button type="submit" class="btn" style="padding: 15px 40px; font-size: 1.1rem;">
+                        <i class="fas fa-paper-plane"></i> Envoyer ma demande
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Section Mon Parcours Enseignant -->
+    <section class="section" id="profil-enseignant" style="background: #f8f9fa;">
+        <div class="section-title">
+            <h2><i class="fas fa-chalkboard-teacher"></i> Mon Parcours Enseignant</h2>
+            <p>Transmettre les mathématiques et l'informatique avec pédagogie et passion</p>
+        </div>
+        
+        <div class="experience-card fade-in" style="max-width: 800px; margin: 0 auto;">
+            <div class="exp-header">
+                <div>
+                    <div class="exp-title">Approche Pédagogique</div>
+                    <div class="exp-company">Fondée sur mes diplômes et compétences techniques</div>
+                </div>
+            </div>
+            <div class="exp-description">
+                <p>Mon Master en Statistiques et ma Licence en Mathématiques Appliquées me permettent non seulement de <strong>maîtriser les concepts scientifiques en profondeur</strong>, mais aussi de les <strong>expliquer de manière claire et accessible</strong>.</p>
+                <p>Je souhaite mettre cette double compétence au service de l'enseignement :</p>
+                <ul style="margin-top: 10px; padding-left: 20px; color: #555;">
+                    <li><strong>Enseigner les mathématiques, statistiques et l'initiation à la programmation</strong> à des élèves de lycée ou des étudiants.</li>
+                    <li><strong>Créer des supports et formations</strong> en Data Science ou développement web pour adultes en reconversion.</li>
+                    <li><strong>Contribuer à des projets EdTech</strong> en apportant mon expertise technique et mon expérience du terrain pédagogique.</li>
+                </ul>
+                <p style="margin-top: 15px; font-style: italic;">Mon objectif est de rendre concret et vivant l'apprentissage des sciences et des technologies.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulaire de Contact Général -->
+    <section class="section" id="contact">
+        <div class="section-title">
+            <h2>Contact Général</h2>
+            <p>Pour toute autre question ou information</p>
+        </div>
+        
+        <div class="order-form-container">
+            <!-- FORMULAIRE DE CONTACT AMÉLIORÉ POUR FORMSPREE -->
+            <form id="contact-form" action="https://formspree.io/f/xkgdpzdq" method="POST">
+                <!-- Champs cachés améliorés -->
+                <input type="hidden" name="_subject" value="📧 NOUVEAU MESSAGE - Portfolio CYBG">
+                <input type="hidden" name="_replyto" value="cheikhyoussoubamargueye@gmail.com">
+                <input type="hidden" name="_format" value="plain">
+                <input type="text" name="_gotcha" style="display:none">
+                <input type="hidden" name="form_type" value="contact_general">
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="contact-name">Nom complet *</label>
+                        <input type="text" id="contact-name" name="nom" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email">Email *</label>
+                        <input type="email" id="contact-email" name="email" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact-subject">Sujet *</label>
+                    <input type="text" id="contact-subject" name="sujet" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact-message">Message *</label>
+                    <textarea id="contact-message" name="message" rows="6" required></textarea>
+                </div>
+                
+                <button type="submit" class="btn" style="width: 100%;">
+                    <i class="fas fa-paper-plane"></i> Envoyer le message
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Langues et Compétences Informatiques -->
+    <section class="section" id="langues">
+        <div class="section-title">
+            <h2>Langues & Compétences Informatiques</h2>
+        </div>
+        
+        <div class="lang-tech-grid">
+            <div class="lang-tech-card fade-in">
+                <h3 style="color: var(--primary); margin-bottom: 25px; font-size: 1.3rem;">
+                    <i class="fas fa-language"></i> Langues
+                </h3>
+                
+                <div class="language-item">
+                    <span class="language-name">Français</span>
+                    <span class="language-level">Courant</span>
+                </div>
+                
+                <div class="language-item">
+                    <span class="language-name">Anglais</span>
+                    <span class="language-level">Intermédiaire</span>
+                </div>
+                
+                <div class="language-item">
+                    <span class="language-name">Wolof</span>
+                    <span class="language-level">Langue maternelle</span>
+                </div>
+            </div>
+            
+            <div class="lang-tech-card fade-in">
+                <h3 style="color: var(--primary); margin-bottom: 25px; font-size: 1.3rem;">
+                    <i class="fas fa-laptop-code"></i> Technologies Maîtrisées
+                </h3>
+                
+                <div class="tech-grid">
+                    <div class="tech-item">Python</div>
+                    <div class="tech-item">R</div>
+                    <div class="tech-item">SQL</div>
+                    <div class="tech-item">Joomla</div>
+                    <div class="tech-item">HTML5</div>
+                    <div class="tech-item">CSS3</div>
+                    <div class="tech-item">Power BI</div>
+                    <div class="tech-item">Excel</div>
+                    <div class="tech-item">Scikit-learn</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3>Cheikh Youssou Bamar GUEYE</h3>
+            <p>Data Scientist, Développeur Joomla & Enseignant</p>
+            
+            <div class="footer-links">
+                <a href="tel:+221772512805" class="footer-link">
+                    <i class="fas fa-phone"></i> +221 77 251 28 05
+                </a>
+                <a href="mailto:cheikhyoussoubamargueye@gmail.com" class="footer-link">
+                    <i class="fas fa-envelope"></i> cheikhyoussoubamargueye@gmail.com
+                </a>
+                <a href="https://linkedin.com/in/cheikh-youssou-hamar-gueye-3249a5278" class="footer-link">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="#order" class="footer-link">
+                    <i class="fas fa-shopping-cart"></i> Commander un service
+                </a>
+            </div>
+            
+            <p style="opacity: 0.7; margin-top: 20px; font-size: 0.9rem;">
+                Services: Développement Joomla • Data Science • Enseignement Mathématiques
+            </p>
+            <p style="opacity: 0.5; margin-top: 10px; font-size: 0.8rem;">
+                © 2025 Cheikh Youssou Bamar GUEYE
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Animation au défilement
+        const observerOptions = {
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+        
+        // Observer tous les éléments avec la classe fade-in
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Navigation fluide
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Fonction pour scroller vers le formulaire de commande
+        function scrollToOrder(serviceType) {
+            document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
+            setTimeout(() => {
+                document.getElementById('order-service').value = serviceType;
+                // Focus sur le premier champ
+                document.getElementById('order-name').focus();
+            }, 500);
+        }
+
+        // Gestion améliorée du formulaire de commande
+        document.getElementById('order-form').addEventListener('submit', function(e) {
+            // Laisser Formspree gérer l'envoi
+            // Afficher message de succès immédiatement
+            showSuccess();
+            
+            // Optionnel: Réinitialiser après 2 secondes
+            setTimeout(() => {
+                this.reset();
+            }, 2000);
+        });
+
+        // Gestion améliorée du formulaire de contact
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            // Laisser Formspree gérer l'envoi
+            showSuccess();
+            
+            // Optionnel: Réinitialiser après 2 secondes
+            setTimeout(() => {
+                this.reset();
+            }, 2000);
+        });
+
+        // Fonctions utilitaires
+        function getServiceName(serviceCode) {
+            const services = {
+                'joomla-junior': 'Profil Joomla Junior (150 000 FCFA)',
+                'joomla-expert': 'Profil Joomla Expert (350 000 FCFA)',
+                'joomla-manager': 'Profil Joomla Manager (500 000 FCFA)',
+                'site-joomla': 'Site Web Joomla sur mesure',
+                'data-science': 'Service Data Science',
+                'recrutement': 'Recrutement/Enseignement',
+                'autre': 'Autre demande'
+            };
+            return services[serviceCode] || serviceCode;
+        }
+
+        function showSuccess() {
+            const message = document.getElementById('successMessage');
+            message.style.display = 'block';
+            message.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'center' 
+            });
+            
+            // Cacher après 8 secondes
+            setTimeout(() => {
+                message.style.display = 'none';
+            }, 8000);
+        }
+
+        function showError(errorText) {
+            const message = document.getElementById('errorMessage');
+            if (errorText) {
+                message.querySelector('p').textContent = errorText;
+            }
+            message.style.display = 'block';
+            message.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'center' 
+            });
+            
+            // Cacher après 8 secondes
+            setTimeout(() => {
+                message.style.display = 'none';
+            }, 8000);
+        }
+        
+        // Vérifier si on vient d'une soumission réussie
+        if (window.location.hash === '#success') {
+            showSuccess();
+            // Retirer le hash de l'URL
+            history.replaceState(null, null, ' ');
+        }
+    </script>
+</body>
+</html>
